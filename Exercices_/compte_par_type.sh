@@ -1,25 +1,21 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 
 if [ "$#" -ne 2 ]; then
-  echo "Usage : $0 <année> <type>"
+  echo "Usage: $0 <année> <type>"
   exit 1
 fi
 
-annee="$1"
-type="$2"
+ANNEE="$1"
+TYPE="$2"
 
-if [[ ! "$annee" =~ ^(2016|2017|2018)$ ]]; then
-  echo "Erreur : année invalide ($annee)"
-  exit 1
-fi
+# Chemin absolu vers le dossier contenant les fichiers .ann
+ANN_DIR="/Users/prune/Downloads/projet encadré/Exercice1/ann"
 
-if [ -d "$annee" ]; then
-  search_path="$annee"
-  include="*.ann"
-else
-  search_path="."
-  include="*${annee}*.ann"
-fi
+# Vérifie que le dossier existe
+[ ! -d "$ANN_DIR" ] && echo "Dossier $ANN_DIR introuvable" && exit 1
 
-count=$(grep -R --include="$include" -h "$type" "$search_path" 2>/dev/null | wc -l)
+# Compte toutes les lignes contenant le type dans les fichiers dont le nom contient l'année
+count=$(find "$ANN_DIR" -type f -name "*$ANNEE*.ann" -exec grep -h "$TYPE" {} + | wc -l)
+
+# Affiche juste le nombre
 echo "$count"
