@@ -6,7 +6,7 @@ Aujourd’hui, j’ai appris à synchroniser les dépôts Git.
 - J'ai créé ce journal de bord. 
 - Pour ajouter et valider les changements: git add nomdefichier puis git commit -m 
 
-##12 octobre 2025 - Explication de script Bash qui vérifie les URL
+## 12 octobre 2025 - Explication de script Bash qui vérifie les URL
 #!/usr/bin/bash: le shebang indique que script doit être exécuté avec l’interpréteur bash. Cela permet de lancer le script directement depuis le terminal.
 
 if [ $# -ne 1 ] then
