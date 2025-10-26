@@ -1,4 +1,8 @@
 #!/bin/bash
+
+output="tableau_fr.tsv"
+echo -e "N°\tURL\tNombre_de_mots\tCode_HTTP\tEncodage" > "$output"
+
 if [ $# -lt 1 ]; then
     echo "Usage: $0 <fichier>"
     exit 1
@@ -32,6 +36,6 @@ while read -r url; do
     # Nombre de mots
     nb_mots=$(curl -s "$url" | wc -w)
 
-	echo -e "${n}\t${url}\t${nb_mots}\t${code_http}\t${encodage}"
+	echo -e "${n}\t${url}\t${nb_mots}\t${code_http}\t${encodage}" >> "$output"
 done < "$1"
 
