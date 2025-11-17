@@ -3,37 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Résultats de l'analyse d'URLs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f8f9fa; }
-        h1 { color: #333; }
-        table { border-collapse: collapse; width: 100%; background: white; }
-        th, td { border: 1px solid #999; padding: 8px 12px; text-align: left; }
-        th { background-color: #007BFF; color: white; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
-        a { color: #007BFF; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7F6CF;
+            margin: 0;
+            padding: 0;
+        }
+        .page-box {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 6px;
+        }
+        .blue-title {
+            background:#B6D8F2;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color:#5784BA;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #B6D8F2;
+            color: #5784BA;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #5784BA;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-<h1>Analyse des URLs</h1>
-<table>
-    <tr>
-        <th>N°</th>
-        <th>URL</th>
-        <th>Nombre de mots</th>
-        <th>Code HTTP</th>
-        <th>Encodage</th>
-    </tr>
-    <tr><td>1</td><td><a href="https://fr.wikipedia.org/wiki/Robot" target="_blank">https://fr.wikipedia.org/wiki/Robot</a></td><td>   13928</td><td>200</td><td>UTF-8</td></tr>
-    <tr><td>2</td><td><a href="https://fr.wikipedia.org/wiki/Robot_de_cuisine" target="_blank">https://fr.wikipedia.org/wiki/Robot_de_cuisine</a></td><td>    4134</td><td>200</td><td>UTF-8</td></tr>
-    <tr><td>3</td><td><a href="fr.wikipedia.org/wiki/Robot_d%27indexation" target="_blank">fr.wikipedia.org/wiki/Robot_d%27indexation</a></td><td>       0</td><td>301</td><td>inconnu</td></tr>
-    <tr><td>4</td><td><a href="https://fr.wikipedia.org/wiki/Bot_informatique" target="_blank">https://fr.wikipedia.org/wiki/Bot_informatique</a></td><td>    6544</td><td>200</td><td>UTF-8</td></tr>
-    <tr><td>5</td><td><a href="https://fr.wikipedia.org/wiki/Atlas_(robot)" target="_blank">https://fr.wikipedia.org/wiki/Atlas_(robot)</a></td><td>     264</td><td>200</td><td>utf-8</td></tr>
-    <tr><td>6</td><td><a href="https://roboty.magistry.fr" target="_blank">https://roboty.magistry.fr</a></td><td>       0</td><td>000</td><td>inconnu</td></tr>
-    <tr><td>7</td><td><a href="https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)" target="_blank">https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)</a></td><td>     264</td><td>429</td><td>utf-8</td></tr>
-    <tr><td>8</td><td><a href="https://fr.wiktionary.org/wiki/robot" target="_blank">https://fr.wiktionary.org/wiki/robot</a></td><td>   18129</td><td>429</td><td>utf-8</td></tr>
-    <tr><td>9</td><td><a href="https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots" target="_blank">https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots</a></td><td>     264</td><td>429</td><td>utf-8</td></tr>
-    <tr><td>10</td><td><a href="https://fr.wikipedia.org/wiki/Robotique" target="_blank">https://fr.wikipedia.org/wiki/Robotique</a></td><td>     264</td><td>429</td><td>utf-8</td></tr>
-</table>
+
+<section class="section">
+    <div class="container page-box">
+
+        <h1 class="title has-text-centered" style="margin-bottom:40px; color:#5784BA;">
+            Analyse des URLs
+        </h1>
+
+        <h2 class="blue-title">
+            Résultats du tableau
+        </h2>
+
+        <table>
+            <tr>
+                <th>N°</th>
+                <th>URL</th>
+                <th>Nombre de mots</th>
+                <th>Code HTTP</th>
+                <th>Encodage</th>
+            </tr>
+            <tr><td>1</td><td><a href="https://fr.wikipedia.org/wiki/Robot" target="_blank">https://fr.wikipedia.org/wiki/Robot</a></td><td>13928</td><td>200</td><td>UTF-8</td></tr>
+            <tr><td>2</td><td><a href="https://fr.wikipedia.org/wiki/Robot_de_cuisine" target="_blank">https://fr.wikipedia.org/wiki/Robot_de_cuisine</a></td><td>4134</td><td>200</td><td>UTF-8</td></tr>
+            <tr><td>3</td><td><a href="fr.wikipedia.org/wiki/Robot_d%27indexation" target="_blank">fr.wikipedia.org/wiki/Robot_d'indexation</a></td><td>0</td><td>301</td><td>inconnu</td></tr>
+            <tr><td>4</td><td><a href="https://fr.wikipedia.org/wiki/Bot_informatique" target="_blank">https://fr.wikipedia.org/wiki/Bot_informatique</a></td><td>6544</td><td>200</td><td>UTF-8</td></tr>
+            <tr><td>5</td><td><a href="https://fr.wikipedia.org/wiki/Atlas_(robot)" target="_blank">https://fr.wikipedia.org/wiki/Atlas_(robot)</a></td><td>264</td><td>200</td><td>UTF-8</td></tr>
+            <tr><td>6</td><td><a href="https://roboty.magistry.fr" target="_blank">https://roboty.magistry.fr</a></td><td>0</td><td>000</td><td>inconnu</td></tr>
+            <tr><td>7</td><td><a href="https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)" target="_blank">https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)</a></td><td>264</td><td>429</td><td>UTF-8</td></tr>
+            <tr><td>8</td><td><a href="https://fr.wiktionary.org/wiki/robot" target="_blank">https://fr.wiktionary.org/wiki/robot</a></td><td>18129</td><td>429</td><td>UTF-8</td></tr>
+            <tr><td>9</td><td><a href="https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots" target="_blank">https://fr.wikipedia.org/wiki/Protocole_d'exclusion_des_robots</a></td><td>264</td><td>429</td><td>UTF-8</td></tr>
+            <tr><td>10</td><td><a href="https://fr.wikipedia.org/wiki/Robotique" target="_blank">https://fr.wikipedia.org/wiki/Robotique</a></td><td>264</td><td>429</td><td>UTF-8</td></tr>
+        </table>
+
+    </div>
+</section>
+
 </body>
 </html>
