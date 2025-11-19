@@ -156,3 +156,269 @@ curl -s "$url" télécharge le contenu HTML de la page. wc -w : compte le nombre
 ### Pour tout afficher avec tabulations
 
 L'option -e permet à echo d'interpréter \t (tabulation).
+
+### 12 novembre 2025 --- Syntaxe Bulma 
+
+## Principe général de Bulma
+
+Bulma est un framework CSS moderne basé sur **Flexbox**, conçu pour
+offrir une mise en page simple, responsive et élégante sans nécessité de
+JavaScript. Il se compose uniquement de classes CSS réutilisables que
+l'on ajoute directement dans le HTML.\
+Nous l'avons utilisé pour formater notre site GitHub Pages afin de
+bénéficier rapidement d'un style propre, cohérent et responsive.
+
+Bulma repose sur deux idées principales :
+
+1.  **Aucune classe personnalisée obligatoire** : tout passe par les
+    classes Bulma.
+2.  **Structure basée sur des composants** comme `hero`, `section`,
+    `navbar`, `card`, etc.
+
+Pour utiliser Bulma, on importe simplement la feuille de style :
+
+``` html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+```
+
+------------------------------------------------------------------------
+## Les éléments de mise en page utilisés
+
+### 1. La classe `container`
+
+``` html
+<div class="container">
+    ...
+</div>
+```
+
+Elle sert à centrer et limiter la largeur du contenu, c'est pratique pour structurer une page GitHub Pages.
+
+------------------------------------------------------------------------
+
+### 2. Les sections : `section` et `hero`
+
+#### `section`
+
+``` html
+<section class="section">
+    <div class="container">
+        ...
+    </div>
+</section>
+```
+
+Utilisée pour découper la page en blocs distincts (introduction,contenu, conclusion...).
+
+#### `hero`
+
+``` html
+<section class="hero is-primary">
+    <div class="hero-body">
+        <p class="title">Mon site GitHub Pages</p>
+    </div>
+</section>
+```
+
+-   `hero` : grand bandeau horizontal
+-   `is-primary` : couleur prédéfinie (thème principal de Bulma)
+-   `hero-body` : zone de texte centrale
+
+------------------------------------------------------------------------
+
+## La syntaxe des classes utilitaires
+
+Bulma propose des centaines de classes dites **"utilitaires"** permettant de modifier rapidement l'apparence :
+
+### 1. Couleurs
+
+``` html
+<p class="has-text-primary">Texte bleu primaire</p>
+<p class="has-background-warning">Fond jaune</p>
+```
+
+Les couleurs standard sont : `primary`, `link`, `info`, `success`,
+`warning`, `danger`.
+
+------------------------------------------------------------------------
+
+### 2. Tailles de texte
+
+``` html
+<p class="is-size-1">Titre 1</p>
+<p class="is-size-4">Texte moyen</p>
+```
+
+Les tailles vont de `is-size-1` (très grand) à `is-size-7` (petit).
+
+------------------------------------------------------------------------
+
+### 3. Marges et espacements
+
+``` html
+<div class="mt-5 mb-3 p-4">
+```
+
+-   `m` = margin\
+-   `p` = padding\
+-   `t`, `b`, `l`, `r` = top, bottom, left, right\
+-   les valeurs vont de 0 à 6 (`mt-6` = grande marge haute)
+
+------------------------------------------------------------------------
+
+## Les composants utilisés
+
+### 1. `card`
+
+``` html
+<div class="card">
+    <div class="card-content">
+        <p class="title">Titre de carte</p>
+        <p class="subtitle">Sous-titre</p>
+    </div>
+</div>
+```
+
+Permet d'encadrer du contenu dans une boîte propre.
+
+------------------------------------------------------------------------
+
+### 2. `navbar`
+
+``` html
+<nav class="navbar is-light">
+    <div class="navbar-brand">
+        <a class="navbar-item">Accueil</a>
+    </div>
+</nav>
+```
+
+Barre de navigation gérée par Bulma via Flexbox.
+
+------------------------------------------------------------------------
+
+## Mise en colonnes (grid system)
+
+Bulma utilise des flexbox pour organiser le contenu en colonnes :
+
+``` html
+<div class="columns">
+    <div class="column is-half">Colonne 1</div>
+    <div class="column is-half">Colonne 2</div>
+</div>
+```
+
+-   `columns` = conteneur
+-   `column` = colonne flexible
+-   `is-half`, `is-one-third`, `is-3` = largeur
+
+C'est ce qui nous a permis d'organiser proprement sections, images, texte, etc.
+
+------------------------------------------------------------------------
+
+## Conclusion
+
+Bulma permet de styliser rapidement une page GitHub Pages grâce à
+son système de classes prêt à l'emploi, sa mise en page basée sur
+Flexbox, ses composants simples (`hero`, `card`, `navbar`, etc.), et
+ses classes utilitaires (couleurs, tailles, marges).
+
+Il n'y a rien à configurer puisqu'il suffit d'ajouter des classes dans le
+HTML.
+
+
+
+
+### 19 novembre 2025 --- Notes sur les expressions régulières Unicode, sed et Git
+
+## Expressions régulières --- Propriétés Unicode
+
+Les caractères Unicode possèdent de nombreuses propriétés indiquant la
+catégorie à laquelle ils appartiennent : lettre, nombre, symbole, etc.
+
+-   `\p{L}+` : recherche tous les caractères ayant la propriété Unicode
+    **Letter**.\
+-   L'utilisation de `\p{...}` nécessite l'indicateur `u` dans
+    l'expression régulière.\
+-   Propriétés utiles :
+    -   `Letter` : indique que le caractère appartient à un alphabet.
+    -   `Number` : indique un chiffre (arabe, chinois, etc.).
+
+### Sous-catégories de la propriété `L` (Letter)
+
+-   `Ll` : lettres minuscules\
+-   `Lm` : lettres modificateurs\
+-   `Lt` : lettres "titre"\
+-   `Lu` : lettres majuscules\
+-   `Lo` : autres lettres
+
+### Exemple classique sans propriété Unicode
+
+``` regex
+[a-zA-Zèéàâêëîïôöùûüÿç]*
+```
+
+------------------------------------------------------------------------
+
+## Commandes sed
+
+-   Remplacement de texte avec sed :
+
+``` bash
+sed 's/regex1/remplacement/'
+```
+
+------------------------------------------------------------------------
+
+## Git --- Gestion des stashes
+Cela va nous être utile lors de la gestion de notre git partagé pour le projet de groupe. 
+De nombreux conflits peuvent apparaître. 
+
+### Liste des stashes
+
+``` bash
+git stash list
+```
+
+Affiche l'ensemble des stashes existants (numérotés à partir de 0).
+
+### Mettre de côté les modifications
+
+``` bash
+git stash push
+```
+
+Enregistre les modifications en cours « sous le tapis ».
+
+### Voir le contenu d'un stash
+
+``` bash
+git stash show
+```
+
+Affiche les changements inclus dans le stash qui serait réappliqué.
+
+### Appliquer un stash et le supprimer
+
+``` bash
+git stash pop
+```
+
+-   Réapplique le dernier stash (`stash@{0}`)
+-   Le **supprime** de la pile
+
+### Appliquer un stash sans le supprimer
+
+``` bash
+git stash apply
+```
+
+Réapplique le stash mais le conserve dans la liste.
+
+### Supprimer un stash sans l'appliquer
+
+``` bash
+git stash drop
+```
+
+Supprime un stash spécifique de la pile.
